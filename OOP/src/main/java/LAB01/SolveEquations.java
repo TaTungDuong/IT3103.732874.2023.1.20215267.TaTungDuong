@@ -13,7 +13,7 @@ public class SolveEquations {
             String input = (String) JOptionPane.showInputDialog(null, "Choose the type of equation",
             "Solve Equations", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
-            if (input.equals(t1)) {
+            if (input.equals(t1)) {// If user choose to solve the linear equation with one variable
                 JOptionPane.showMessageDialog(null, "Solve a*x + b = 0\n");
                 // Ask the user to input two numbers
                 String num1 = JOptionPane.showInputDialog(null, "Enter a:", 
@@ -38,9 +38,9 @@ public class SolveEquations {
                 }
 
                 JOptionPane.showMessageDialog(null, message);
-            } else if (input.equals(t3)) {
+            } else if (input.equals(t3)) { // If user choose to solve the second-degree equation with one variable
                 JOptionPane.showMessageDialog(null, "Solve a*x^2 + b*x + c = 0\n");
-                // Ask the user to input two numbers
+                // Ask the user to input 3 numbers
                 String num1 = JOptionPane.showInputDialog(null, "Enter a:", 
                         t3, 0);
                 String num2 = JOptionPane.showInputDialog(null, "Enter b:", 
@@ -81,9 +81,9 @@ public class SolveEquations {
 
                 JOptionPane.showMessageDialog(null, message);
             }
-            else if(input.equals(t2)) {
+            else if(input.equals(t2)) { // If user choose to solve the linear system with two variables
                 JOptionPane.showMessageDialog(null, "Solve a*x + b*y = c & d*x + e*y = f\n");
-                // Ask the user to input two numbers
+                // Ask the user to input 6 numbers
                 String num1 = JOptionPane.showInputDialog(null, "Enter a:", 
                         t2, 0);
                 String num2 = JOptionPane.showInputDialog(null, "Enter b:", 
@@ -105,10 +105,10 @@ public class SolveEquations {
                 double f = Double.parseDouble(num6);
 
                 String message = "";
-
+                
+                //Calculate det value
                 double det = a*e - b*d;
-
-                if (det == 0) {
+                if (det == 0) { // If det equals to 0
                     if (a*d - b*c == 0 && a*f - c*d == 0) {
                         message = "Infinite solutions";
                     } else {
