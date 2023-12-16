@@ -1,4 +1,4 @@
-package LAB04.AimsProject.Media;
+package LAB05.AimsProject.media;
 
 import java.util.Comparator;
 

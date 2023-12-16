@@ -1,7 +1,7 @@
-package LAB04.AimsProject;
+package LAB05.AimsProject;
 
-import LAB04.AimsProject.Cart;
-import LAB04.AimsProject.Media.*;
+import LAB05.AimsProject.exception.PlayerException;
+import LAB05.AimsProject.media.*;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class Aims {
     static Store store = new Store();
     // Create a new cart
     static Cart cart = new Cart();
-    public static void showMenu() {
+    public static void showMenu() throws Exception {
         int command;
         do {
             Scanner scanner = new Scanner(System.in);
@@ -44,7 +44,7 @@ public class Aims {
         } while (command != 0);
     }
 
-    public static void updateStoreMenu() {
+    public static void updateStoreMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Show menu
         System.out.println("Options: ");
@@ -67,12 +67,12 @@ public class Aims {
         }
     }
 
-    public static void storeMenu() {
+    public static void storeMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Show menu
 		System.out.println("Options: ");
 		System.out.println("--------------------------------");
-		System.out.println("1. See a media’s details");
+		System.out.println("1. See a mediaâ€™s details");
 		System.out.println("2. Add a media to cart");
         System.out.println("3. Play a media");
 		System.out.println("4. See current cart");
@@ -118,7 +118,7 @@ public class Aims {
         }
     }
 
-    public static void mediaDetailsMenu(Media media) {
+    public static void mediaDetailsMenu(Media media) throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Show menu
         System.out.println("Options: ");
@@ -146,7 +146,7 @@ public class Aims {
         }
     }
 
-    public static void cartMenu() {
+    public static void cartMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Show menu
         System.out.println("Options: ");
@@ -194,7 +194,7 @@ public class Aims {
         }
     }
 
-    public static void filterCartMenu() {
+    public static void filterCartMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Show menu
         System.out.println("Options: ");
@@ -251,7 +251,7 @@ public class Aims {
         }
     }
 
-    public static void removeMediaFromCart() {
+    public static void removeMediaFromCart() throws Exception {
         Scanner scanner = new Scanner(System.in);
         Media media;
         do {
@@ -262,7 +262,7 @@ public class Aims {
         cart.removeMedia(media);
     }
 
-    public static void removeMediaFromStore() {
+    public static void removeMediaFromStore() throws Exception {
         Scanner scanner = new Scanner(System.in);
         Media media;
         do {
@@ -273,10 +273,10 @@ public class Aims {
         store.removeMedia(media);
     }
 
-    public static void playAMedia(Media media) {
+    public static void playAMedia(Media media) throws PlayerException {
     // Check if media is null
         if (media == null) {
-            
+            throw new IllegalArgumentException("Media cannot be null");
         }
         // Check if media is an instance of DigitalVideoDisc
         if (media instanceof DigitalVideoDisc) {
@@ -292,7 +292,8 @@ public class Aims {
         }
     }
 
-    public static void addMediaToCart() {
+
+    public static void addMediaToCart() throws Exception {
         Scanner scanner = new Scanner(System.in);
         Media media;
         do {
@@ -306,14 +307,14 @@ public class Aims {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // Create new media and add them to the store
         // Adding DVDs
-        Media dvd1 = new LAB04.AimsProject.Media.DigitalVideoDisc(1, "Inception",
+        Media dvd1 = new LAB05.AimsProject.media.DigitalVideoDisc(1, "Inception",
                 "Science Fiction", "Christopher Nolan", 148, 19.99f);
         store.addMedia(dvd1);
 
-        Media dvd2 = new LAB04.AimsProject.Media.DigitalVideoDisc(2, "The Dark Knight",
+        Media dvd2 = new LAB05.AimsProject.media.DigitalVideoDisc(2, "The Dark Knight",
                 "Action", "Christopher Nolan", 152, 17.99f);
         store.addMedia(dvd2);
 

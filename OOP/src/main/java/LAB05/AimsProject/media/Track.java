@@ -1,4 +1,6 @@
-package LAB04.AimsProject.Media;
+package LAB05.AimsProject.media;
+
+import LAB05.AimsProject.exception.PlayerException;
 
 public class Track implements Playable{
     // Attribute
@@ -12,9 +14,13 @@ public class Track implements Playable{
     }
 
     // Method to play a track
-    public void play() {
-        System.out.println("Playing track: " + title);
-        System.out.println("Track length : " + length);
+    public void play() throws PlayerException {
+        if (this.getLength() > 0) {
+            System.out.println("Playing track: " + title);
+            System.out.println("Track length : " + length);
+        } else {
+            throw new PlayerException("ERROR: Track length is non-positive!");
+        }
     }
 
     @Override
@@ -32,6 +38,7 @@ public class Track implements Playable{
         }
         return false;
     }
+
 
     // Getter and Setter
     public String getTitle() {
